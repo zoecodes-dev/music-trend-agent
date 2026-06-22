@@ -1,0 +1,12 @@
+# Music Trend Agent — runtime dependencies
+# 코드의 실제 import 기준 (pyflakes·grep 검증). 버전은 현재 venv 핀.
+# Python 3.12
+
+anthropic==0.89.0               # Claude API (Opus/Sonnet/Haiku tool calling)
+tavily-python==0.7.23           # 웹 검색 (from tavily import TavilyClient)
+google-api-python-client==2.193.0  # YouTube Data API v3
+requests==2.33.1                # Apple RSS · Melon/Kworb 스크래핑 · Reddit JSON · Last.fm
+python-dotenv==1.2.2            # .env 로드
+
+# 주의: spotipy는 설치돼 있으나 코드 미사용 (Spotify Audio Features 폐쇄 — 구조적 차단).
+# 의존성에서 제외함. Last.fm은 별도 SDK 없이 requests로 직접 호출.
