@@ -55,10 +55,10 @@ fi
 
 # Analysis 단계 (별도 플래그로 독립 재실행 가능)
 if [ "$PAUSE_ANALYSIS" != "true" ] && [ ! -f "$FLAG_DIR/${DATE}_analysis.done" ]; then
-    echo "[3/3] agents/analysis.py 실행" >> "$LOG_FILE"
-    "$VENV_PYTHON" "$PROJECT_DIR/agents/analysis.py" >> "$LOG_FILE" 2>&1
+    echo "[3/3] agents.analysis 실행" >> "$LOG_FILE"
+    ( cd "$PROJECT_DIR" && "$VENV_PYTHON" -m agents.analysis ) >> "$LOG_FILE" 2>&1
     if [ $? -ne 0 ]; then
-        echo "❌ agents/analysis.py 실패" >> "$LOG_FILE"
+        echo "❌ agents.analysis 실패" >> "$LOG_FILE"
         exit 1
     fi
     touch "$FLAG_DIR/${DATE}_analysis.done"
